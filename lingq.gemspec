@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
      "lib/lingq/client.rb",
      "lib/lingq/lesson.rb",
      "lib/lingq/word.rb",
+     "lingq.gemspec",
      "test/helper.rb",
      "test/test_client.rb",
      "test/test_lesson.rb",
