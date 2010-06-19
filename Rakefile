@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "lingq"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{API Wrapper for Lingq.com}
+    gem.description = %Q{Gem for interacting with the API of lingq.com.  It's a language learning website, and it's pretty useful, but I want to be able to work on my flashcards offline.  This gem is being written to be included in a desktop client (and maybe eventually a mobile client), but will certainly still be useful as a standalone api wrapper for other projects that want to interact with Lingq.com}
     gem.email = "ethan.vizitei@gmail.com"
     gem.homepage = "http://github.com/evizitei/lingq"
     gem.authors = ["Ethan Vizitei"]
