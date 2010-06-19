@@ -30,6 +30,10 @@ module Lingq
       get_with_language("lessons/").map{|hash| Lingq::Lesson.new(@target_language,hash)}
     end
     
+    def words
+      get_with_language("lingqs/").map{|hash| Lingq::Word.new(@target_language,hash)}
+    end
+    
   private
     def get_with_key(path,params={})
       self.class.get(path,{:query=>params.merge({:apikey=>@apikey})})

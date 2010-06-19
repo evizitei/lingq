@@ -48,6 +48,26 @@ class TestClient < Test::Unit::TestCase
         assert_equal 3,@lessons.size
       end
     end
+    
+    context "prebuilt client for words call" do
+      setup do
+        body = %Q{[ { "status": 0, "fragment": "вперед и вы найдете его .", "term": "Его", "id": 4259928, "hint": "him" }, 
+          { "status": 0, "fragment": "Официант, принесите нам счет , пожалуйста", "term": "Счет", "id": 4259923, "hint": "check " }, 
+          { "status": 0, "fragment": "Легко сказать да трудно сделать.", "term": "трудно", "id": 4259919, "hint": "difficult" }, 
+          { "status": 0, "fragment": "Легко сказать да трудно сделать.", "term": "Легко", "id": 4259916, "hint": "easily" }, 
+          { "status": 0, "fragment": "стараться делать это с радостью .", "term": "радостью", "id": 4259915, "hint": "joy" }]}
+        stub_api("ru/lingqs",body)
+        @words = @client.words
+      end
+      
+      should "load an array of lessons" do
+        assert_equal Lingq::Word,@words.first.class
+      end
+      
+      should "load one lesson for each json hash" do
+        assert_equal 5,@words.size
+      end
+    end
   end
   
   def stub_api(path,body)
