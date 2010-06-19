@@ -15,6 +15,7 @@ begin
     gem.add_dependency "bundler", ">= 0"
     gem.add_development_dependency "test-unit", ">= 0"
     gem.add_development_dependency "webmock", ">= 0"
+    gem.add_development_dependency "mocha", ">= 0"
     
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
