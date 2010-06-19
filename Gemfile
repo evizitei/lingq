@@ -5,6 +5,7 @@ gem "httparty"
 
 group(:test){
   gem "test-unit"
+  gem "mocha"
   gem "thoughtbot-shoulda"
   gem "webmock"
 }
