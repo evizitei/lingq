@@ -27,11 +27,16 @@ module Lingq
     end
     
     def lessons
-      get_with_language("lessons/").map{|hash| Lingq::Lesson.new(@target_language,hash)}
+      get_with_language("lessons/").map{|hash| Lingq::Lesson.new(self,@target_language,hash)}
     end
     
     def words
       get_with_language("lingqs/").map{|hash| Lingq::Word.new(@target_language,hash)}
+    end
+    
+    def words_for_lesson(lesson)
+      change_language!(lesson.language)
+      get_with_language("#{lesson.id}/lingqs/").map{|hash| Lingq::Word.new(@target_language,hash)}
     end
     
   private
