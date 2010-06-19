@@ -26,9 +26,17 @@ module Lingq
       @target_language = language_code if learning_language?(language_code)
     end
     
+    def lessons
+      get_with_language("lessons/").map{|hash| Lingq::Lesson.new(@target_language,hash)}
+    end
+    
   private
     def get_with_key(path,params={})
       self.class.get(path,{:query=>params.merge({:apikey=>@apikey})})
+    end
+    
+    def get_with_language(path,params={})
+      get_with_key("/#{@target_language}/#{path}",params)
     end
   end
 end
