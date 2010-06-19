@@ -17,10 +17,13 @@ You need the API key for your account.  Usage is as follows:
   
   #load all lingq flashcards for the user
   words = client.words
+  
+  #load only the flashcards for a single lesson
+  words = lessons.first.words
 
 == Current Status
 
-Right now just data pulling is done.  Will add soon the ability to update lingqs and load lingqs by lesson.
+Right now just data pulling is done.  Will add soon the ability to update lingqs.
 
 == Note on Patches/Pull Requests
  
