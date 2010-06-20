@@ -89,9 +89,27 @@ class TestClient < Test::Unit::TestCase
         assert_equal 5,@words.size
       end
     end
+    
+    context "prebuilt client for updating a word" do
+      setup do
+        stub_regex_api(/ru\/lingqs/,"",:post)
+        @word = Lingq::Word.new("ru",{ "status"=> 0, "fragment"=> "вперед и вы найдете его .", "term"=> "Его", "id"=> 4259928, "hint"=> "him" })
+        @word.status = 1
+        @client.update_word!(@word)
+      end
+
+      should "not bomb" do
+        assert true
+      end
+    end
   end
   
-  def stub_api(path,body)
-    stub_request(:any, "http://lingq.com/api_v2/#{path}/?apikey=api-key").to_return(:body => body, :status => 200,  :headers => { 'Content-Type' => "application/json; charset=utf-8" } )
+  
+  def stub_api(path,body,method = :any)
+    stub_request(method, "http://lingq.com/api_v2/#{path}/?apikey=api-key").to_return(:body => body, :status => 200,  :headers => { 'Content-Type' => "application/json; charset=utf-8" } )
+  end
+  
+  def stub_regex_api(regex,body,method = :any)
+    stub_request(method, regex).to_return(:body => body, :status => 200,  :headers => { 'Content-Type' => "application/json; charset=utf-8" } )
   end
 end

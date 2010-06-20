@@ -39,6 +39,10 @@ module Lingq
       get_with_language("#{lesson.id}/lingqs/").map{|hash| Lingq::Word.new(@target_language,hash)}
     end
     
+    def update_word!(word)
+      post_with_language("lingqs/",word.params)
+    end
+    
   private
     def get_with_key(path,params={})
       self.class.get(path,{:query=>params.merge({:apikey=>@apikey})})
@@ -46,6 +50,14 @@ module Lingq
     
     def get_with_language(path,params={})
       get_with_key("/#{@target_language}/#{path}",params)
+    end
+  
+    def post_with_key(path,params={})
+      self.class.post(path,{:query=>params.merge({:apikey=>@apikey})})
+    end
+    
+    def post_with_language(path,params={})
+      post_with_key("/#{@target_language}/#{path}",params)
     end
   end
 end
