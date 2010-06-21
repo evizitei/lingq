@@ -92,9 +92,10 @@ class TestClient < Test::Unit::TestCase
     
     context "prebuilt client for updating a word" do
       setup do
-        stub_regex_api(/ru\/lingqs/,"",:post)
-        @word = Lingq::Word.new("ru",{ "status"=> 0, "fragment"=> "вперед и вы найдете его .", "term"=> "Его", "id"=> 4259928, "hint"=> "him" })
+        stub_regex_api(/ru\/lingqs/,"",:put)
+        @word = Lingq::Word.new(@client,"ru",{ "status"=> 0, "fragment"=> "fragment", "term"=> "Его", "id"=> 4259928, "hint"=> "him" })
         @word.status = 1
+        @client.expects(:system_call).with("curl -X PUT -d 'id=4259928;status=1;hint=him;fragment=fragment' http://www.lingq.com/api_v2/ru/lingqs/?apikey=api-key")
         @client.update_word!(@word)
       end
 
