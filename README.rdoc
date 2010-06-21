@@ -20,10 +20,21 @@ You need the API key for your account.  Usage is as follows:
   
   #load only the flashcards for a single lesson
   words = lessons.first.words
+  
+  #update all updatable flashcard information
+  word = words.first
+  word.status = 2
+  word.hint = "A better definition of the word"
+  client.update_word!(word)
+  
+  #update the 0-3 status of a word (updates the server)
+  word.increment_status!
 
 == Current Status
 
-Right now just data pulling is done.  Will add soon the ability to update lingqs.
+Right now just data pulling is done, and you can manually update flashcards through the client object.  ()
+
+BE WARNED! The update call for saving flashcard data is currently being done through a system("curl ...") because I'm having trouble getting httparty to do the PUT action I want correctly.  If you are on windows, this will be a problem.  I'm working on it.  :)
 
 == Note on Patches/Pull Requests
  
