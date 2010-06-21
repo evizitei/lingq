@@ -40,7 +40,7 @@ class TestLesson < Test::Unit::TestCase
     
     context "loading words" do
       setup do
-        @client.expects(:words_for_lesson).with(@lesson).returns([Lingq::Word.new("ru",{})])
+        @client.expects(:words_for_lesson).with(@lesson).returns([Lingq::Word.new(@client,"ru",{})])
         @words = @lesson.words
       end
       
