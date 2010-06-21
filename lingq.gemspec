@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{lingq}
-  s.version = "0.2.1"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ethan Vizitei"]
-  s.date = %q{2010-06-19}
+  s.date = %q{2010-06-21}
   s.description = %q{Gem for interacting with the API of lingq.com.  It's a language learning website, and it's pretty useful, but I want to be able to work on my flashcards offline.  This gem is being written to be included in a desktop client (and maybe eventually a mobile client), but will certainly still be useful as a standalone api wrapper for other projects that want to interact with Lingq.com}
   s.email = %q{ethan.vizitei@gmail.com}
   s.extra_rdoc_files = [
